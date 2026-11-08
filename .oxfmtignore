@@ -1,6 +1,7 @@
 CHARTER.md
 PRODUCT_RULES.md
 TODO.md
+.codex/chat/
 lenddocket-samples/
 node_modules/
 dist/

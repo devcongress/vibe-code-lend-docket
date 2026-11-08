@@ -1,0 +1,14 @@
+{
+  "schema": "lenddocket.codex-chat.v1",
+  "sourceThreadId": "01a1bce5-111f-75b1-8bb4-82c0ae44b8d4",
+  "sourceSession": "rollout-2026-11-08T20-41-31-01a1bce5-111f-75b1-8bb4-82c0ae44b8d4.jsonl",
+  "capturedAt": "2026-11-08T23:27:25.433Z",
+  "turnCount": 22,
+  "assistantMessageCount": 85,
+  "excludes": [
+    "system and developer instructions",
+    "private model reasoning",
+    "tool calls and tool outputs",
+    "injected environment and application context"
+  ]
+}
