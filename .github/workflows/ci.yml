@@ -46,7 +46,7 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@v6
-      - uses: actions/dependency-review-action@v4
+      - uses: actions/dependency-review-action@v5
 
   secret-scan:
     runs-on: ubuntu-latest
