@@ -1,0 +1,2 @@
+# Secrets belong in .dev.vars, which is ignored by Git.
+# Access integration is added in milestone 3.

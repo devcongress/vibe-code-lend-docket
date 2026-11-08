@@ -1,0 +1,57 @@
+{
+  "name": "lenddocket",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc -b && vite build",
+    "cf:typegen": "wrangler types --env-interface CloudflareBindings",
+    "check": "pnpm format:check && pnpm lint && pnpm typecheck && pnpm test && pnpm build",
+    "config:validate": "node scripts/validate-cloudflare-config.mjs",
+    "deploy": "pnpm deploy:production",
+    "deploy:dry-run": "pnpm build && wrangler deploy --dry-run --outdir dist-worker",
+    "deploy:playground": "LENDDOCKET_TARGET=playground pnpm build && wrangler deploy",
+    "deploy:playground:dry-run": "LENDDOCKET_TARGET=playground pnpm build && wrangler deploy --dry-run --outdir dist-worker-playground",
+    "deploy:production": "pnpm config:validate production && pnpm build && wrangler deploy --env production",
+    "deploy:staging": "pnpm config:validate staging && pnpm build && wrangler deploy --env staging",
+    "dev": "vite",
+    "format": "oxfmt --ignore-path=.oxfmtignore .",
+    "format:check": "oxfmt --ignore-path=.oxfmtignore --check .",
+    "lint": "oxlint . --ignore-pattern='lenddocket-samples/**'",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "test:watch": "vitest",
+    "typecheck": "tsc -b --pretty false"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "^5.107.1",
+    "hono": "^4.13.17",
+    "lucide-react": "^0.545.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-hook-form": "^7.91.0",
+    "react-router": "^8.5.1",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@cloudflare/vite-plugin": "^1.67.0",
+    "@cloudflare/vitest-plugin": "^1.6.0",
+    "@playwright/test": "^1.65.0",
+    "@types/node": "^24.19.2",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "oxfmt": "^0.77.0",
+    "oxlint": "^1.92.0",
+    "typescript": "~7.0.2",
+    "vite": "^8.3.6",
+    "vitest": "^5.1.0",
+    "wrangler": "^4.158.0"
+  },
+  "engines": {
+    "node": ">=24 <25",
+    "pnpm": ">=12 <13"
+  },
+  "packageManager": "pnpm@12.18.0"
+}

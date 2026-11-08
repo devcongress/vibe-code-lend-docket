@@ -1,0 +1,118 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "lenddocket-local",
+  "main": "worker/index.ts",
+  "compatibility_date": "2026-11-04",
+  "assets": {
+    "not_found_handling": "single-page-application",
+    "run_worker_first": ["/api/*"],
+  },
+  "observability": {
+    "enabled": true,
+  },
+  "upload_source_maps": true,
+  "vars": {
+    "APP_ENV": "local",
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "lenddocket-local",
+      "database_id": "00000000-0000-0000-0000-000000000000",
+    },
+  ],
+  "r2_buckets": [
+    {
+      "binding": "FILES",
+      "bucket_name": "lenddocket-local-files",
+    },
+  ],
+  "queues": {
+    "producers": [
+      {
+        "binding": "JOBS",
+        "queue": "lenddocket-local-jobs",
+      },
+    ],
+    "consumers": [
+      {
+        "queue": "lenddocket-local-jobs",
+        "max_batch_size": 10,
+        "max_batch_timeout": 5,
+        "max_retries": 3,
+      },
+    ],
+  },
+  "env": {
+    "staging": {
+      "name": "lenddocket-staging",
+      "vars": {
+        "APP_ENV": "staging",
+      },
+      "d1_databases": [
+        {
+          "binding": "DB",
+          "database_name": "lenddocket-staging",
+          "database_id": "11111111-1111-1111-1111-111111111111",
+        },
+      ],
+      "r2_buckets": [
+        {
+          "binding": "FILES",
+          "bucket_name": "lenddocket-staging-files",
+        },
+      ],
+      "queues": {
+        "producers": [
+          {
+            "binding": "JOBS",
+            "queue": "lenddocket-staging-jobs",
+          },
+        ],
+        "consumers": [
+          {
+            "queue": "lenddocket-staging-jobs",
+            "max_batch_size": 10,
+            "max_batch_timeout": 5,
+            "max_retries": 3,
+          },
+        ],
+      },
+    },
+    "production": {
+      "name": "lenddocket",
+      "vars": {
+        "APP_ENV": "production",
+      },
+      "d1_databases": [
+        {
+          "binding": "DB",
+          "database_name": "lenddocket-production",
+          "database_id": "22222222-2222-2222-2222-222222222222",
+        },
+      ],
+      "r2_buckets": [
+        {
+          "binding": "FILES",
+          "bucket_name": "lenddocket-production-files",
+        },
+      ],
+      "queues": {
+        "producers": [
+          {
+            "binding": "JOBS",
+            "queue": "lenddocket-production-jobs",
+          },
+        ],
+        "consumers": [
+          {
+            "queue": "lenddocket-production-jobs",
+            "max_batch_size": 10,
+            "max_batch_timeout": 5,
+            "max_retries": 3,
+          },
+        ],
+      },
+    },
+  },
+}

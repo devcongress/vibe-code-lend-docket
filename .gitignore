@@ -1,0 +1,27 @@
+# Dependencies and builds
+node_modules/
+dist/
+dist-worker/
+dist-worker-playground/
+coverage/
+playwright-report/
+test-results/
+
+# Local Cloudflare state and secrets
+.wrangler/
+.dev.vars*
+!.dev.vars.example
+.env*
+!.env.example
+
+# Logs and local tooling
+*.log
+pnpm-debug.log*
+*.local
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# TypeScript
+*.tsbuildinfo

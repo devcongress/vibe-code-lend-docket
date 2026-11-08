@@ -1,0 +1,11 @@
+CHARTER.md
+PRODUCT_RULES.md
+TODO.md
+lenddocket-samples/
+node_modules/
+dist/
+coverage/
+playwright-report/
+test-results/
+pnpm-lock.yaml
+worker-configuration.d.ts
